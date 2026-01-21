@@ -1,0 +1,13 @@
+package com.ordify.ordify_backend;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class OrdifyBackendApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(OrdifyBackendApplication.class, args);
+	}
+
+}
