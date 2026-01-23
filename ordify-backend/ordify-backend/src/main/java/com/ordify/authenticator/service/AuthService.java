@@ -1,9 +1,10 @@
-package com.ordify.service;
+package com.ordify.authenticator.service;
 
-import com.ordify.dto.*;
-import com.ordify.entity.*;
-import com.ordify.repository.*;
-import com.ordify.security.JwtUtil;
+import com.ordify.authenticator.dto.*;
+import com.ordify.authenticator.entity.*;
+import com.ordify.authenticator.repository.*;
+import com.ordify.authenticator.security.JwtUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.ordify.security;
+package com.ordify.authenticator.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

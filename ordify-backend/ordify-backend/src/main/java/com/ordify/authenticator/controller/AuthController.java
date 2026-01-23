@@ -1,7 +1,7 @@
-package com.ordify.controller;
+package com.ordify.authenticator.controller;
 
-import com.ordify.dto.*;
-import com.ordify.service.AuthService;
+import com.ordify.authenticator.dto.*;
+import com.ordify.authenticator.service.AuthService;
 
 import jakarta.validation.Valid;
 

@@ -1,9 +1,10 @@
-package com.ordify.security;
+package com.ordify.authenticator.security;
 
-import com.ordify.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
+
+import com.ordify.authenticator.repository.UserRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

@@ -1,4 +1,4 @@
-package com.ordify.security;
+package com.ordify.authenticator.security;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

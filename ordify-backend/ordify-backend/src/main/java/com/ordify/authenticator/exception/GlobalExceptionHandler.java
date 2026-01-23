@@ -1,4 +1,4 @@
-package com.ordify.exception;
+package com.ordify.authenticator.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;

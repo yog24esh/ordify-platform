@@ -1,4 +1,4 @@
-package com.ordify.entity;
+package com.ordify.authenticator.entity;
 
 import jakarta.persistence.*;
 

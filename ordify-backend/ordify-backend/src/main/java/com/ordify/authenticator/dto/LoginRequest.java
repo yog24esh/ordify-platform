@@ -1,4 +1,4 @@
-package com.ordify.dto;
+package com.ordify.authenticator.dto;
 
 public class LoginRequest {
 

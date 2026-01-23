@@ -1,10 +1,11 @@
-package com.ordify.service;
+package com.ordify.authenticator.service;
 
-import com.ordify.dto.UpdateUserRequest;
-import com.ordify.entity.Role;
-import com.ordify.entity.User;
-import com.ordify.repository.RoleRepository;
-import com.ordify.repository.UserRepository;
+import com.ordify.authenticator.dto.UpdateUserRequest;
+import com.ordify.authenticator.entity.Role;
+import com.ordify.authenticator.entity.User;
+import com.ordify.authenticator.repository.RoleRepository;
+import com.ordify.authenticator.repository.UserRepository;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

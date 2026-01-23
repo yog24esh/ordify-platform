@@ -1,7 +1,8 @@
-package com.ordify.controller;
+package com.ordify.authenticator.controller;
 
-import com.ordify.entity.Role;
-import com.ordify.service.RoleService;
+import com.ordify.authenticator.entity.Role;
+import com.ordify.authenticator.service.RoleService;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

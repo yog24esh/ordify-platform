@@ -1,7 +1,8 @@
-package com.ordify.repository;
+package com.ordify.authenticator.repository;
 
-import com.ordify.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.ordify.authenticator.entity.Role;
 
 import java.util.Optional;
 
