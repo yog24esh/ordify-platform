@@ -1,7 +1,11 @@
 package com.ordify.controller;
 
+import com.ordify.dto.UpdateUserRequest;
 import com.ordify.entity.User;
 import com.ordify.service.UserService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +34,22 @@ public class UserController {
     public List<User> getByRole(@RequestParam String role) {
         return userService.getUsersByRole(role);
     }
+    
+    @PutMapping("/{id}")
+    public User updateUser(
+            @PathVariable Long id,
+           @Valid @RequestBody UpdateUserRequest req) {
+
+        return userService.updateUser(id, req);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return "User deleted successfully";
+    }
+
+
 
     @PatchMapping("/{id}/status")
     public String updateStatus(
