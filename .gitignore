@@ -1,16 +1,6 @@
-# Maven / Spring Boot
-/ordify-backend/target/
-*.class
-*.log
+# Eclipse IDE files
+.metadata/
+*.launch
 
-# IDE
-.idea/
-.vscode/
-*.iml
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Env
-.env
+# Spring Boot local config
+application.yaml
