@@ -1,4 +1,4 @@
-package com.ordify.common.dto;
+package com.ordify.admin.common.dto;
 
 import java.time.LocalDateTime;
 

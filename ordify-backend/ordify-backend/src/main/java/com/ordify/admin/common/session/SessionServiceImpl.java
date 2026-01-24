@@ -1,9 +1,10 @@
-package com.ordify.common.session;
+package com.ordify.admin.common.session;
 
-import com.ordify.common.exception.InvalidOperationException;
-import com.ordify.common.exception.ResourceNotFoundException;
-import com.ordify.common.session.entity.UserSession;
-import com.ordify.common.session.repository.UserSessionRepository;
+import com.ordify.admin.common.exception.InvalidOperationException;
+import com.ordify.admin.common.exception.ResourceNotFoundException;
+import com.ordify.admin.common.session.entity.UserSession;
+import com.ordify.admin.common.session.repository.UserSessionRepository;
+
 //import com.ordify.user.entity.User;
 //import com.ordify.user.repository.UserRepository;
 import org.springframework.stereotype.Service;

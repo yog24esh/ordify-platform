@@ -1,11 +1,12 @@
-package com.ordify.common.exception;
+package com.ordify.admin.common.exception;
 
-import com.ordify.common.dto.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.ordify.admin.common.dto.ErrorResponse;
 
 import java.time.LocalDateTime;
 

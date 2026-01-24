@@ -1,8 +1,9 @@
-package com.ordify.common.session.repository;
+package com.ordify.admin.common.session.repository;
 
-import com.ordify.common.session.entity.UserSession;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.ordify.admin.common.session.entity.UserSession;
 
 /**
  * UserSessionRepository
@@ -11,4 +12,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserSessionRepository extends JpaRepository<UserSession, String> {
+	
 }

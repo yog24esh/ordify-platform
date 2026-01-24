@@ -1,4 +1,4 @@
-package com.ordify.common.exception;
+package com.ordify.admin.common.exception;
 
 /**
  * Thrown when an operation is not allowed due to business rules.

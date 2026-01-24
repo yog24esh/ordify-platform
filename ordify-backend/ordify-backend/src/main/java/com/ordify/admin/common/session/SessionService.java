@@ -1,4 +1,4 @@
-package com.ordify.common.session;
+package com.ordify.admin.common.session;
 //
 ////import com.ordify.user.entity.User;
 //

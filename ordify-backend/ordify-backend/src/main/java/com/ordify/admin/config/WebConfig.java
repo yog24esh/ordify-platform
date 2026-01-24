@@ -1,10 +1,10 @@
-package com.ordify.config;
+package com.ordify.admin.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.ordify.common.session.SessionResolver;
+import com.ordify.admin.common.session.SessionResolver;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {

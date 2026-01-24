@@ -1,4 +1,4 @@
-package com.ordify.common.session.entity;
+package com.ordify.admin.common.session.entity;
 
 //import com.ordify.user.entity.User;
 import jakarta.persistence.*;
