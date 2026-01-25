@@ -6,8 +6,8 @@ import com.ordify.admin.dto.response.DashboardStatsResponse;
 import com.ordify.admin.dto.response.StoreResponse;
 import com.ordify.admin.service.AdminService;
 
-//import com.ordify.store.entity.DarkStore;
-//import com.ordify.store.service.StoreService;
+import com.ordify.darkstore.entity.DarkStore;
+import com.ordify.darkstore.service.DarkStoreService;
 //import com.ordify.user.entity.User;
 //import com.ordify.user.service.UserService;
 //import com.ordify.order.service.OrderService;
@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class AdminServiceImpl implements AdminService {
 
 //    private final UserService userService;
-//    private final StoreService storeService;
+    private final DarkStoreService darkStoreService;
 //    private final OrderService orderService;
 //    private final DeliveryService deliveryService;
 
@@ -37,6 +37,9 @@ public class AdminServiceImpl implements AdminService {
 //        this.orderService = orderService;
 //        this.deliveryService = deliveryService;
 //    }
+    public AdminServiceImpl(DarkStoreService darkStoreService) {
+		this.darkStoreService = darkStoreService;
+	}
 
     // Fetches platform-wide statistics for admin dashboard
 //    @Override
