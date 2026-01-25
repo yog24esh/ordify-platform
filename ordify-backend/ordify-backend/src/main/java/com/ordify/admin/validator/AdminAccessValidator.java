@@ -1,11 +1,10 @@
 package com.ordify.admin.validator;
 
-import com.ordify.admin.common.exception.AccessDeniedException;
-import com.ordify.admin.common.exception.ResourceNotFoundException;
-import com.ordify.admin.common.session.SessionService;
-
 //import com.ordify.user.entity.User;
 import org.springframework.stereotype.Component;
+
+import com.ordify.admin.common.exception.AccessDeniedException;
+import com.ordify.admin.common.session.SessionService;
 
 /**
  * Validates whether the current request is made by a SUPER_ADMIN.

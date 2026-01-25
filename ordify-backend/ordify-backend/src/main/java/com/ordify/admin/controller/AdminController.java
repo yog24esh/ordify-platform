@@ -1,15 +1,22 @@
 package com.ordify.admin.controller;
 
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.ordify.admin.dto.request.AssignStoreAdminRequest;
 import com.ordify.admin.dto.response.ApiMessageResponse;
-import com.ordify.admin.dto.response.DashboardStatsResponse;
 import com.ordify.admin.dto.response.StoreResponse;
 import com.ordify.admin.service.AdminService;
 import com.ordify.admin.validator.AdminAccessValidator;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * AdminController
@@ -38,7 +45,7 @@ public class AdminController {
         this.adminService = adminService;
         this.accessValidator = accessValidator;
     }
-    
+
   @GetMapping("/test")
   public ResponseEntity<String> testEndpoint() {
 	  return ResponseEntity.ok("AdminController is working!");
@@ -67,14 +74,14 @@ public class AdminController {
      *
      * Returns all dark stores in the system (active + inactive).
      */
-//    @GetMapping("/stores")
-//    public ResponseEntity<List<StoreResponse>> getAllStores(
-//            @RequestHeader("X-SESSION-ID") String sessionId) {
-//
-//        accessValidator.validateSuperAdmin(sessionId);
-//        return ResponseEntity.ok(adminService.getAllStores());
-//    }
+    @GetMapping("/stores")
+    public ResponseEntity<List<StoreResponse>> getAllStores(
+            @RequestHeader("X-SESSION-ID") String sessionId) {
 
+        accessValidator.validateSuperAdmin(sessionId);
+        return ResponseEntity.ok(adminService.getAllStores());
+    }
+    
     /**
      * PUT /admin/store/{storeId}/disable
      *
@@ -87,7 +94,7 @@ public class AdminController {
             @PathVariable Long storeId) {
 
         accessValidator.validateSuperAdmin(sessionId);
-//        adminService.disableStore(storeId);
+        adminService.disableStore(storeId);
         return ResponseEntity.ok(new ApiMessageResponse("Store disabled successfully"));
     }
 
@@ -102,7 +109,7 @@ public class AdminController {
             @PathVariable Long storeId) {
 
         accessValidator.validateSuperAdmin(sessionId);
-//        adminService.enableStore(storeId);
+        adminService.enableStore(storeId);
         return ResponseEntity.ok(new ApiMessageResponse("Store enabled successfully"));
     }
 

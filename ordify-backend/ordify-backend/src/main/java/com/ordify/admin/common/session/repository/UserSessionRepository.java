@@ -12,5 +12,5 @@ import com.ordify.admin.common.session.entity.UserSession;
  */
 @Repository
 public interface UserSessionRepository extends JpaRepository<UserSession, String> {
-	
+
 }
