@@ -1,18 +1,9 @@
 package com.ordify.admin.common.session;
 
-import com.ordify.admin.common.exception.InvalidOperationException;
-import com.ordify.admin.common.exception.ResourceNotFoundException;
-import com.ordify.admin.common.session.entity.UserSession;
-import com.ordify.admin.common.session.repository.UserSessionRepository;
-
 //import com.ordify.user.entity.User;
 //import com.ordify.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDateTime;
-import java.util.Optional;
-import java.util.UUID;
 
 /**
  * SessionServiceImpl

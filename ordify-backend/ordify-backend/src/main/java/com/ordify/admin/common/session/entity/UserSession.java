@@ -1,8 +1,12 @@
 package com.ordify.admin.common.session.entity;
 
-//import com.ordify.user.entity.User;
-import jakarta.persistence.*;
 import java.time.LocalDateTime;
+
+//import com.ordify.user.entity.User;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 /**
  * UserSession

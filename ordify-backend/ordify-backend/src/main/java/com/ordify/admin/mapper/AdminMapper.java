@@ -1,13 +1,8 @@
 package com.ordify.admin.mapper;
 
-import com.ordify.admin.dto.response.OrderSummaryResponse;
-import com.ordify.admin.dto.response.StoreResponse;
 //import com.ordify.order.entity.Order;
 //import com.ordify.store.entity.DarkStore;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * AdminMapper
