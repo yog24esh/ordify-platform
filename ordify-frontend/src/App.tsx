@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+    <div style={{ padding: "40px", fontFamily: "Arial, sans-serif" }}>
+      <h1>🚀 Ordify Frontend is Running</h1>
+
+      <p>
+        If you can see this page, your React + Vite + TypeScript setup
+        is working correctly.
       </p>
-    </>
-  )
+
+      <hr />
+
+      <h3>Demo Interaction</h3>
+
+      <p>Button clicked: <strong>{count}</strong> times</p>
+
+      <button
+        onClick={() => setCount(count + 1)}
+        style={{
+          padding: "10px 16px",
+          fontSize: "16px",
+          cursor: "pointer",
+        }}
+      >
+        Click Me
+      </button>
+
+      <hr />
+
+      <p>Use <code>/demo</code> to view the demo page.</p>
+
+      <small>
+        Backend can run separately on <code>localhost:8080</code>
+      </small>
+    </div>
+  );
 }
 
-export default App
+export default App;
