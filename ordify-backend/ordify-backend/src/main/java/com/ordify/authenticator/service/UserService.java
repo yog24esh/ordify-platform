@@ -18,7 +18,7 @@ public class UserService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder; // ✅ Add PasswordEncoder
 
-    // ✅ Constructor Injection
+    // Constructor Injection
     public UserService(UserRepository userRepository,
                        RoleRepository roleRepository,
                        PasswordEncoder passwordEncoder) {

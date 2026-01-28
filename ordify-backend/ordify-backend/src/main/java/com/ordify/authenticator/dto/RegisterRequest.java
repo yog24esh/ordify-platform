@@ -14,7 +14,19 @@ public class RegisterRequest {
     @Email(message = "Invalid email format")
     private String email;
 
-    @NotBlank(message = "Phone number is required")
+    public String getSecurityQuestion() {
+		return securityQuestion;
+	}
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
+	public String getSecurityAnswer() {
+		return securityAnswer;
+	}
+	public void setSecurityAnswer(String securityAnswer) {
+		this.securityAnswer = securityAnswer;
+	}
+	@NotBlank(message = "Phone number is required")
     @Pattern(
         regexp = "^[0-9]{10}$",
         message = "Phone number must be 10 digits"
@@ -31,6 +43,13 @@ public class RegisterRequest {
 
     @NotBlank(message = "Role is required")
     private String role;
+    
+    @NotBlank
+    private String securityQuestion;
+
+    @NotBlank
+    private String securityAnswer;
+
 
     // ===== Getters & Setters =====
 
