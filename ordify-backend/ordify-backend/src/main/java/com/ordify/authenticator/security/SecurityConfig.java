@@ -48,7 +48,7 @@ public class SecurityConfig {
 
             // API authorization rules
             .authorizeHttpRequests(auth -> auth
-            	.requestMatchers("/**").permitAll() 
+            	.requestMatchers("/**").permitAll()
                 .requestMatchers("/auth/**").permitAll()   // register & login
                 .requestMatchers("/roles/**").hasRole("SUPER_ADMIN")
                 .anyRequest().authenticated()

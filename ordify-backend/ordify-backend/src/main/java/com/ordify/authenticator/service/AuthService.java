@@ -1,20 +1,24 @@
 package com.ordify.authenticator.service;
 
-import com.ordify.authenticator.dto.*;
-import com.ordify.authenticator.entity.*;
-import com.ordify.authenticator.repository.*;
-import com.ordify.authenticator.security.JwtUtil;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.ordify.authenticator.dto.AuthResponse;
+import com.ordify.authenticator.dto.LoginRequest;
+import com.ordify.authenticator.dto.RegisterRequest;
+import com.ordify.authenticator.entity.Role;
+import com.ordify.authenticator.entity.User;
+import com.ordify.authenticator.repository.RoleRepository;
+import com.ordify.authenticator.repository.UserRepository;
+import com.ordify.authenticator.security.JwtUtil;
+
 @Service
 public class AuthService {
 
-    @Autowired private UserRepository userRepo;	
+    @Autowired private UserRepository userRepo;
     @Autowired private RoleRepository roleRepo;
     @Autowired private PasswordEncoder encoder;
     @Autowired private JwtUtil jwtUtil;
