@@ -74,14 +74,19 @@ public class AdminController {
      *
      * Returns all dark stores in the system (active + inactive).
      */
-    @GetMapping("/stores")
-    public ResponseEntity<List<StoreResponse>> getAllStores(
-            @RequestHeader("X-SESSION-ID") String sessionId) {
+//    @GetMapping("/stores")
+//    public ResponseEntity<List<StoreResponse>> getAllStores(
+//            @RequestHeader("X-SESSION-ID") String sessionId) {
+//
+//        accessValidator.validateSuperAdmin(sessionId);
+//        return ResponseEntity.ok(adminService.getAllStores());
+//    }
 
-        accessValidator.validateSuperAdmin(sessionId);
-        return ResponseEntity.ok(adminService.getAllStores());
+  	@GetMapping("/stores")
+    public ResponseEntity<List<StoreResponse>> getAllStores() {
+    	return ResponseEntity.ok(adminService.getAllStores());
     }
-    
+
     /**
      * PUT /admin/store/{storeId}/disable
      *
@@ -129,7 +134,7 @@ public class AdminController {
             @RequestBody AssignStoreAdminRequest request) {
 
         accessValidator.validateSuperAdmin(sessionId);
-//        adminService.assignStoreAdmin(storeId, request.getUserId());
+        adminService.assignStoreAdmin(storeId, request.getUserId());
         return ResponseEntity.ok(new ApiMessageResponse("Store admin assigned successfully"));
     }
 
@@ -145,7 +150,7 @@ public class AdminController {
             @PathVariable Long userId) {
 
         accessValidator.validateSuperAdmin(sessionId);
-//        adminService.disableUser(userId);
+        adminService.disableUser(userId);
         return ResponseEntity.ok(new ApiMessageResponse("User disabled successfully"));
     }
 
@@ -160,7 +165,7 @@ public class AdminController {
             @PathVariable Long userId) {
 
         accessValidator.validateSuperAdmin(sessionId);
-//        adminService.enableUser(userId);
+        adminService.enableUser(userId);
         return ResponseEntity.ok(new ApiMessageResponse("User enabled successfully"));
     }
 
@@ -170,12 +175,12 @@ public class AdminController {
      * Returns all orders in the system across all stores.
      * Used for monitoring & debugging.
      */
-//    @GetMapping("/orders")
-//    public ResponseEntity<?> getAllOrders(
-//            @RequestHeader("X-SESSION-ID") String sessionId) {
-//
-//        accessValidator.validateSuperAdmin(sessionId);
-//        return ResponseEntity.ok(adminService.getAllOrders());
-//    }
+    @GetMapping("/orders")
+    public ResponseEntity<?> getAllOrders(
+            @RequestHeader("X-SESSION-ID") String sessionId) {
+
+        accessValidator.validateSuperAdmin(sessionId);
+        return ResponseEntity.ok(adminService.getAllOrders());
+    }
 
 }

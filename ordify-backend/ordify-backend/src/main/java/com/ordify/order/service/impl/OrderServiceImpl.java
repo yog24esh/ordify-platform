@@ -1,15 +1,18 @@
 package com.ordify.order.service.impl;
 
-import java.util.stream.Collectors;
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import com.ordify.order.dto.OrderRequestDto;
 import com.ordify.order.dto.OrderResponseDto;
+import com.ordify.order.dto.summary.OrderSummaryResponse;
 import com.ordify.order.entity.Order;
 import com.ordify.order.entity.OrderItem;
 import com.ordify.order.entity.OrderStatus;
+import com.ordify.order.mapper.OrderMapper;
 import com.ordify.order.repository.OrderRepository;
 import com.ordify.order.service.OrderService;
 
@@ -17,9 +20,11 @@ import com.ordify.order.service.OrderService;
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
+    private final OrderMapper orderMapper;
 
-    public OrderServiceImpl(OrderRepository orderRepository) {
+    public OrderServiceImpl(OrderRepository orderRepository, OrderMapper orderMapper) {
         this.orderRepository = orderRepository;
+        this.orderMapper = orderMapper;
     }
 
     @Override
@@ -113,5 +118,14 @@ public class OrderServiceImpl implements OrderService {
         }).collect(Collectors.toList());
 
         return res;
+    }
+    
+    // Fetches all orders across all stores
+    @Override
+    public List<OrderSummaryResponse> getAllOrders() {
+        return orderRepository.findAll()
+                .stream()
+                .map(orderMapper::toOrderSummaryResponse)
+                .toList();
     }
 }

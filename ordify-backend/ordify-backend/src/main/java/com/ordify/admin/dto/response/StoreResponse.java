@@ -41,6 +41,6 @@ public class StoreResponse {
                 .createdAt(store.getCreatedAt())
                 .build();
     }
-    
-    
+
+
 }

@@ -2,16 +2,19 @@ package com.ordify.admin.service;
 
 import java.util.List;
 
-//import com.ordify.user.entity.User;
-//import com.ordify.user.service.UserService;
 //import com.ordify.order.service.OrderService;
 //import com.ordify.delivery.service.DeliveryService;
 import org.springframework.stereotype.Service;
 
-import com.ordify.admin.common.exception.ResourceNotFoundException;
+import com.ordify.admin.common.exception.InvalidOperationException;
+import com.ordify.admin.dto.response.OrderSummaryRes;
 import com.ordify.admin.dto.response.StoreResponse;
-import com.ordify.darkstore.entity.DarkStore;
+import com.ordify.authenticator.entity.User;
+import com.ordify.authenticator.service.UserService;
+import com.ordify.darkstore.dto.DarkStoreResponse;
 import com.ordify.darkstore.service.DarkStoreService;
+import com.ordify.order.dto.summary.OrderSummaryResponse;
+import com.ordify.order.service.OrderService;
 
 /**
  * Implements all Super Admin business operations.
@@ -19,9 +22,9 @@ import com.ordify.darkstore.service.DarkStoreService;
 @Service
 public class AdminServiceImpl implements AdminService {
 
-//    private final UserService userService;
+    private final UserService userService;
     private final DarkStoreService storeService;
-//    private final OrderService orderService;
+    private final OrderService orderService;
 //    private final DeliveryService deliveryService;
 
 //    public AdminServiceImpl(UserService userService,
@@ -33,8 +36,12 @@ public class AdminServiceImpl implements AdminService {
 //        this.orderService = orderService;
 //        this.deliveryService = deliveryService;
 //    }
-    public AdminServiceImpl(DarkStoreService storeService) {
+    public AdminServiceImpl(DarkStoreService storeService, 
+    						UserService userService, 
+    						OrderService orderService) {
 		this.storeService = storeService;
+		this.userService = userService;
+		this.orderService = orderService;
 	}
 
     // Fetches platform-wide statistics for admin dashboard
@@ -69,58 +76,58 @@ public class AdminServiceImpl implements AdminService {
 //
 //    // Enables a previously disabled store
 //    @Override
-    public void enableStore(Long storeId) {
+    @Override
+	public void enableStore(Long storeId) {
 		storeService.enableDarkStore(storeId);
     }
-//
-//    // Assigns a user as store admin for a store
-//    @Override
-//    public void assignStoreAdmin(Long storeId, Long userId) {
-//
-//        DarkStore store = storeService.getStoreById(storeId)
+
+    // Assigns a user as store admin for a store
+    @Override
+    public void assignStoreAdmin(Long storeId, Long userId) {
+
+        DarkStoreResponse store = storeService.getDarkStoreById(storeId);
 //                .orElseThrow(() -> new ResourceNotFoundException("Store not found"));
-//
-//        User user = userService.getUserById(userId)
+
+        User user = userService.getUserById(userId);
 //                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-//
-//        if (storeService.hasAdmin(storeId)) {
-//            throw new InvalidOperationException("Store already has an admin");
-//        }
-//
-//        userService.promoteToStoreAdmin(user);
-//        storeService.assignAdmin(store, user);
-//    }
-//
+
+        if (storeService.hasAdmin(storeId)) {
+            throw new InvalidOperationException("Store already has an admin");
+        }
+
+        userService.promoteToStoreAdmin(user);
+        storeService.assignAdmin(store, user);
+    }
+
 //    // Disables a user account
-//    @Override
-//    public void disableUser(Long userId) {
-//
-//        User user = userService.getUserById(userId)
+    @Override
+    public void disableUser(Long userId) {
+
+        User user = userService.getUserById(userId);
 //                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-//
-//        if (user.isSuperAdmin()) {
-//            throw new InvalidOperationException("Cannot disable SUPER_ADMIN");
-//        }
-//
-//        user.setIsActive(false);
-//        userService.save(user);
-//    }
-//
-//    // Enables a disabled user account
-//    @Override
-//    public void enableUser(Long userId) {
-//
-//        User user = userService.getUserById(userId)
-//                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-//
-//        user.setIsActive(true);
-//        userService.save(user);
-//    }
-//
-//    // Returns all orders across all stores
-//    @Override
-//    public List<?> getAllOrders() {
-//
-//        return orderService.getAllOrders();
-//    }
+
+        if (user.isSuperAdmin()) {
+            throw new InvalidOperationException("Cannot disable SUPER_ADMIN");
+        }
+
+        user.setIsActive(false);
+        userService.save(user);
+    }
+
+    // Enables a disabled user account
+    @Override
+    public void enableUser(Long userId) {
+
+        User user = userService.getUserById(userId);
+
+        user.setIsActive(true);
+        userService.save(user);
+    }
+
+    // Returns all orders across all stores
+    @Override
+    public List<OrderSummaryResponse> getAllOrders() {
+
+        return orderService.getAllOrders();
+    }
 }

@@ -12,7 +12,7 @@ import lombok.Getter;
  */
 @Getter
 @Builder
-public class OrderSummaryResponse {
+public class OrderSummaryRes {
 
     private Long orderId;
     private Long userId;

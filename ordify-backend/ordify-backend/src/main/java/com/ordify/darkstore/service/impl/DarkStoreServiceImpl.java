@@ -7,23 +7,31 @@ import org.springframework.stereotype.Service;
 
 import com.ordify.admin.common.exception.ResourceNotFoundException;
 import com.ordify.admin.dto.response.StoreResponse;
+import com.ordify.authenticator.entity.User;
 import com.ordify.darkstore.dto.DarkStoreCreateRequest;
 import com.ordify.darkstore.dto.DarkStoreResponse;
 import com.ordify.darkstore.dto.DarkStoreUpdateRequest;
 import com.ordify.darkstore.entity.DarkStore;
+import com.ordify.darkstore.entity.StoreAdmin;
 import com.ordify.darkstore.exception.DarkStoreAlreadyDisabledException;
 import com.ordify.darkstore.exception.DarkStoreNotFoundException;
 import com.ordify.darkstore.mapper.DarkStoreMapper;
 import com.ordify.darkstore.repository.DarkStoreRepository;
 import com.ordify.darkstore.service.DarkStoreService;
+import com.ordify.darkstore.service.StoreAdminRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class DarkStoreServiceImpl implements DarkStoreService {
 
     private final DarkStoreRepository darkStoreRepository;
 
-    public DarkStoreServiceImpl(DarkStoreRepository darkStoreRepository) {
+    private final StoreAdminRepository storeAdminRepository;
+
+    public DarkStoreServiceImpl(DarkStoreRepository darkStoreRepository, StoreAdminRepository storeAdminRepository) {
         this.darkStoreRepository = darkStoreRepository;
+        this.storeAdminRepository = storeAdminRepository;
     }
 
     // ---------------- CREATE ----------------
@@ -88,7 +96,7 @@ public class DarkStoreServiceImpl implements DarkStoreService {
         store.setIsActive(false);
         darkStoreRepository.save(store);
     }
-    
+
     // ---------------- ENABLE STORE ----------------
     @Override
     public void enableDarkStore(Long storeId) {
@@ -105,4 +113,25 @@ public class DarkStoreServiceImpl implements DarkStoreService {
         return darkStoreRepository.findById(storeId)
                 .orElseThrow(() -> new DarkStoreNotFoundException(storeId));
     }
+
+    // ---------------- Is Admin Present ----------------
+    @Override
+    public boolean hasAdmin(Long storeId) {
+        return storeAdminRepository.existsByStore_StoreId(storeId);
+    }
+
+    @Override
+    @Transactional
+    public void assignAdmin(DarkStoreResponse storeResponse, User user) {
+
+        DarkStore store = darkStoreRepository.findById(storeResponse.getStoreId())
+                .orElseThrow(() -> new ResourceNotFoundException("Store not found"));
+
+        StoreAdmin storeAdmin = new StoreAdmin();
+        storeAdmin.setStore(store);
+        storeAdmin.setUser(user);
+
+        storeAdminRepository.save(storeAdmin);
+    }
+
 }
