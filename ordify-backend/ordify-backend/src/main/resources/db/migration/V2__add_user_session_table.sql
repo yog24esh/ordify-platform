@@ -1,4 +1,4 @@
-CREATE TABLE user_session (
+CREATE TABLE IF NOT EXISTS user_session (
     session_id VARCHAR(100) PRIMARY KEY,
     user_id BIGINT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
