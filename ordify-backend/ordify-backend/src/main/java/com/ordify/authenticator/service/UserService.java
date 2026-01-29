@@ -1,15 +1,19 @@
 package com.ordify.authenticator.service;
 
+import java.util.List;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.ordify.admin.common.exception.InvalidOperationException;
+import com.ordify.admin.common.exception.ResourceNotFoundException;
 import com.ordify.authenticator.dto.UpdateUserRequest;
 import com.ordify.authenticator.entity.Role;
 import com.ordify.authenticator.entity.User;
 import com.ordify.authenticator.repository.RoleRepository;
 import com.ordify.authenticator.repository.UserRepository;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import jakarta.transaction.Transactional;
 
 @Service
 public class UserService {
@@ -86,4 +90,40 @@ public class UserService {
         User user = getUserById(id);
         userRepository.delete(user);
     }
+
+    public User save(User user) {
+        return userRepository.save(user);
+    }
+
+    // ================= PROMOTE TO STORE ADMIN =================
+    @Transactional
+    public void promoteToStoreAdmin(User user) {
+
+        if (!user.getIsActive()) {
+            throw new InvalidOperationException("Cannot promote an inactive user");
+        }
+
+        String currentRole = user.getRole().getRoleName();
+
+        if ("SUPER_ADMIN".equals(currentRole)) {
+            throw new InvalidOperationException("SUPER_ADMIN cannot be reassigned");
+        }
+
+        if ("STORE_ADMIN".equals(currentRole)) {
+            return; // already a store admin, no-op
+        }
+
+        if ("DELIVERY_PARTNER".equals(currentRole)) {
+            throw new InvalidOperationException("Delivery partner cannot be store admin");
+        }
+
+        Role storeAdminRole = roleRepository.findByRoleName("STORE_ADMIN")
+                .orElseThrow(() -> new ResourceNotFoundException("STORE_ADMIN role not found"));
+
+        user.setRole(storeAdminRole);
+        userRepository.save(user);
+    }
+
+
+
 }

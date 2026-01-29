@@ -1,11 +1,11 @@
 package com.ordify.authenticator.service;
 
-import com.ordify.authenticator.entity.Role;
-import com.ordify.authenticator.repository.RoleRepository;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.ordify.authenticator.entity.Role;
+import com.ordify.authenticator.repository.RoleRepository;
 
 @Service
 public class RoleService {

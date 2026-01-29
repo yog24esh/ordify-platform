@@ -1,11 +1,12 @@
 package com.ordify.inventory.repository;
 
-import com.ordify.inventory.entity.Inventory;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
+import com.ordify.inventory.entity.Inventory;
 
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {

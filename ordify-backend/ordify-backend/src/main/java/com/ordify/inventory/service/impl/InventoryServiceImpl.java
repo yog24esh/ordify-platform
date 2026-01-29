@@ -1,5 +1,10 @@
 package com.ordify.inventory.service.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
 import com.ordify.inventory.dto.InventoryCreateRequest;
 import com.ordify.inventory.dto.InventoryResponse;
 import com.ordify.inventory.dto.InventoryUpdateRequest;
@@ -9,10 +14,6 @@ import com.ordify.inventory.exception.InventoryNotFoundException;
 import com.ordify.inventory.mapper.InventoryMapper;
 import com.ordify.inventory.repository.InventoryRepository;
 import com.ordify.inventory.service.InventoryService;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class InventoryServiceImpl implements InventoryService {

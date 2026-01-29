@@ -1,10 +1,10 @@
 package com.ordify.inventory.service;
 
+import java.util.List;
+
 import com.ordify.inventory.dto.InventoryCreateRequest;
 import com.ordify.inventory.dto.InventoryResponse;
 import com.ordify.inventory.dto.InventoryUpdateRequest;
-
-import java.util.List;
 
 public interface InventoryService {
 
