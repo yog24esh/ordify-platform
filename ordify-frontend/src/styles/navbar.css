@@ -1,0 +1,52 @@
+.navbar {
+height: 60px;
+background: #5f2eea;
+color: white;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 20px;
+}
+
+
+.nav-brand {
+font-size: 20px;
+font-weight: bold;
+}
+
+
+.logout-btn {
+background: white;
+color: #5f2eea;
+border: none;
+padding: 8px 14px;
+border-radius: 6px;
+cursor: pointer;
+}
+
+
+.logout-btn:hover {
+background: #eee;
+}
+
+
+.dashboard {
+padding: 20px;
+}
+
+.auth-container {
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+background: linear-gradient(135deg, #5f2eea, #1cc8ee);
+font-family: Arial, sans-serif;
+}
+
+
+.auth-card {
+background: white;
+padding: 32px;
+width: 360px;
+border-radius: 12px;
+}
