@@ -3,8 +3,8 @@ import DashboardPage from "./pages/DashboardPage";
 import StoresPage from "./pages/StoresPage";
 import UsersPage from "./pages/UsersPage";
 import OrdersPage from "./pages/OrdersPage";
-import ProtectedRoute from "../../shared/ProtectedRoute";
-
+import ProtectedRoute from "../../../src/app/ProtectedRoutes";
+// src\app\routes.tsx
 export const adminRoutes = [
   {
     path: "/admin",

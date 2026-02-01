@@ -8,4 +8,14 @@ const http = axios.create({
   },
 });
 
+http.interceptors.request.use((config) => {
+  const sessionId = localStorage.getItem("SESSION_ID");
+
+  if (sessionId) {
+    config.headers["X-SESSION-ID"] = sessionId;
+  }
+
+  return config;
+});
+
 export default http;
