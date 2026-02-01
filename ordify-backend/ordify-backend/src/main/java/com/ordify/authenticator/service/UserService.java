@@ -1,15 +1,16 @@
 package com.ordify.authenticator.service;
 
+import java.util.List;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.ordify.admin.common.exception.InvalidOperationException;
 import com.ordify.authenticator.dto.UpdateUserRequest;
 import com.ordify.authenticator.entity.Role;
 import com.ordify.authenticator.entity.User;
 import com.ordify.authenticator.repository.RoleRepository;
 import com.ordify.authenticator.repository.UserRepository;
-
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UserService {
@@ -85,5 +86,32 @@ public class UserService {
     public void deleteUser(Long id) {
         User user = getUserById(id);
         userRepository.delete(user);
+    }
+
+    public void promoteToStoreAdmin(User user) {
+
+        if (!user.getIsActive()) {
+            throw new InvalidOperationException("Cannot promote inactive user");
+        }
+
+        // If user is already a store admin, do nothing
+        if ("STORE_ADMIN".equals(user.getRole().getRoleName())) {
+            return;
+        }
+
+        Role storeAdminRole = roleRepository.findByRoleName("STORE_ADMIN")
+                .orElseThrow(() ->
+                        new InvalidOperationException("STORE_ADMIN role not configured"));
+
+        user.setRole(storeAdminRole);
+        userRepository.save(user);
+    }
+
+    public Long countAllUsers() {
+        return userRepository.count();
+    }
+
+    public User save(User user) {
+        return userRepository.save(user);
     }
 }

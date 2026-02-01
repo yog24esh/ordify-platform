@@ -28,6 +28,10 @@ public class SessionResolver implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response,
                              Object handler) {
+    	
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            return true;
+        }
 
         String sessionId = request.getHeader("X-SESSION-ID");
 

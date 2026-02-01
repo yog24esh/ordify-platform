@@ -20,4 +20,7 @@ public interface DeliveryService {
     void updateLocation(LocationUpdateDto dto);
 
     void updateDeliveryStatus(Long orderId, DeliveryStatus status);
+    
+    long countActivePartners();
+    
 }

@@ -1,6 +1,7 @@
 package com.ordify.admin.common.exception;
 
-import jakarta.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -8,13 +9,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.ordify.admin.common.dto.ErrorResponse;
 
-import java.time.LocalDateTime;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * Handles exceptions across the whole application and returns proper JSON response.
  */
 @RestControllerAdvice
-public class GlobalExceptionHandler {
+public class AdminGlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleNotFound(ResourceNotFoundException ex, HttpServletRequest request) {

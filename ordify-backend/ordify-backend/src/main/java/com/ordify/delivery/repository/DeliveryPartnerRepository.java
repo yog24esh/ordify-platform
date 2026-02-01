@@ -14,5 +14,7 @@ public interface DeliveryPartnerRepository extends JpaRepository<DeliveryPartner
     Optional<DeliveryPartner> findByUserId(Long userId);
 
     List<DeliveryPartner> findByIsOnlineTrue();
+
+	long countByIsOnlineTrue();
 }
 

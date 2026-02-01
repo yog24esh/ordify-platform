@@ -1,9 +1,12 @@
 package com.ordify.admin.dto.response;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+import com.ordify.order.entity.Order;
+
 import lombok.Builder;
 import lombok.Getter;
-
-import java.time.LocalDateTime;
 
 /**
  * OrderSummaryResponse
@@ -17,7 +20,20 @@ public class OrderSummaryResponse {
     private Long orderId;
     private Long userId;
     private Long storeId;
+//    private String status;
+    private BigDecimal totalAmount;
     private String orderStatus;
-    private Double totalAmount;
     private LocalDateTime createdAt;
+
+    public static OrderSummaryResponse fromEntity(Order order) {
+        return OrderSummaryResponse.builder()
+                .orderId(order.getOrderId())
+                .userId(order.getUserId())
+                .storeId(order.getStoreId())
+                .orderStatus(order.getOrderStatus().name())
+                .totalAmount(order.getTotalAmount())
+                .createdAt(order.getCreatedAt())
+                .build();
+    }
+
 }

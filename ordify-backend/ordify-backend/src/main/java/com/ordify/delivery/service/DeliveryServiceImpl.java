@@ -129,5 +129,10 @@ public class DeliveryServiceImpl implements DeliveryService {
             orderRepository.save(order);
         }
     }
+    
+    @Override
+    public long countActivePartners() {
+    			return partnerRepository.countByIsOnlineTrue();
+    }
 }
 

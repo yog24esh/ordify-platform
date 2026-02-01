@@ -1,7 +1,8 @@
 package com.ordify.order.service.impl;
 
-import java.util.stream.Collectors;
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -85,10 +86,7 @@ public class OrderServiceImpl implements OrderService {
         if ((current == OrderStatus.CREATED && next == OrderStatus.ACCEPTED) || (current == OrderStatus.ACCEPTED && next == OrderStatus.PACKED)) {
 			return;
 		}
-        if (current == OrderStatus.PACKED && next == OrderStatus.OUT_FOR_DELIVERY) {
-			return;
-		}
-        if (current == OrderStatus.OUT_FOR_DELIVERY && next == OrderStatus.DELIVERED) {
+        if ((current == OrderStatus.PACKED && next == OrderStatus.OUT_FOR_DELIVERY) || (current == OrderStatus.OUT_FOR_DELIVERY && next == OrderStatus.DELIVERED)) {
 			return;
 		}
 
@@ -113,5 +111,21 @@ public class OrderServiceImpl implements OrderService {
         }).collect(Collectors.toList());
 
         return res;
+    }
+
+    @Override
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
+    }
+
+    @Override
+    public Long countAllOrders() {
+        return orderRepository.count();
+    }
+
+    @Override
+    public Double calculateTotalRevenue() {
+        Double total = orderRepository.sumTotalAmount();
+        return total != null ? total : 0.0;
     }
 }
