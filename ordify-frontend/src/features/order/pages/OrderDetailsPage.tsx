@@ -1,45 +1,78 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { updateOrderStatus, cancelOrder } from "../api/orderApi";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import {
+  getOrderById,
+  updateOrderStatus,
+  cancelOrder,
+} from "../api/orderApi";
+import type { OrderResponse, OrderStatus } from "../types/order.types";
+import OrderStatusActions from "../components/OrderStatusActions";
+import "../styles/order.css";
 
 const OrderDetailsPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
+  const [order, setOrder] = useState<OrderResponse | null>(null);
 
-  const orderId = Number(id);
+  useEffect(() => {
+    const load = async () => {
+      if (!id) return;
+      setOrder(await getOrderById(+id));
+    };
 
-  const handleStatusUpdate = async () => {
-    try {
-      await updateOrderStatus(orderId, "DELIVERED");
-      alert("Order status updated");
-    } catch (error) {
-      console.error("Failed to update status", error);
-    }
-  };
+    void load();
+  }, [id]);
 
-  const handleCancelOrder = async () => {
-    try {
-      await cancelOrder(orderId);
-      alert("Order cancelled");
-      navigate("/orders/create");
-    } catch (error) {
-      console.error("Failed to cancel order", error);
-    }
-  };
-
-  if (!orderId) return <div>Invalid Order ID</div>;
+  if (!order) {
+    return (
+      <div className="order-container">
+        <p>Loading order details...</p>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <h1>Order Details</h1>
-      <p>Order ID: {orderId}</p>
+    <div className="order-feature">
+      <div className="order-container">
+        <h2>Order #{order.orderId}</h2>
 
-      <button onClick={handleStatusUpdate}>
-        Update Status
-      </button>
+        <div className="order-summary">
+          <p>
+            <strong>Status:</strong> {order.status}
+          </p>
+          <p>
+            <strong>Total Amount:</strong> {order.totalAmount}
+          </p>
+          <p>
+            <strong>Store ID:</strong> {order.storeId}
+          </p>
+        </div>
 
-      <button onClick={handleCancelOrder}>
-        Cancel Order
-      </button>
+        <h3>Items</h3>
+        <ul className="item-list">
+          {order.items.map((i, idx) => (
+            <li key={idx}>
+              <strong>Product:</strong> {i.productId} &nbsp;|&nbsp;
+              <strong>Qty:</strong> {i.quantity} &nbsp;|&nbsp;
+              <strong>Price:</strong> {i.price}
+            </li>
+          ))}
+        </ul>
+
+        <div className="status-actions">
+          <OrderStatusActions
+            status={order.status}
+            onChangeStatus={async (s: OrderStatus) => {
+              const updated = await updateOrderStatus(order.orderId, s);
+              setOrder(updated);
+            }}
+            onCancel={async () => {
+              await cancelOrder(order.orderId);
+              const refreshed = await getOrderById(order.orderId);
+              setOrder(refreshed);
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 };
