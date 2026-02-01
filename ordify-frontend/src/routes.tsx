@@ -1,5 +1,5 @@
 import { useRoutes } from "react-router-dom";
-import App from "./App";
+import App from "./app/App";
 import DemoPage from "./demo/DemoPage";
 
 export default function AppRoutes() {
