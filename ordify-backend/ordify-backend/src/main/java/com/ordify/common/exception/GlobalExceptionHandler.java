@@ -4,6 +4,9 @@ import com.ordify.darkstore.exception.DarkStoreAlreadyDisabledException;
 import com.ordify.darkstore.exception.DarkStoreNotFoundException;
 import com.ordify.inventory.exception.InventoryAlreadyExistsException;
 import com.ordify.inventory.exception.InventoryNotFoundException;
+import com.ordify.product.exception.ProductAlreadyDisabledException;
+import com.ordify.product.exception.ProductNotFoundException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -45,6 +48,22 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InventoryAlreadyExistsException.class)
     public ResponseEntity<Map<String, Object>> handleInventoryAlreadyExists(
             InventoryAlreadyExistsException ex) {
+
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    // ---------------- PRODUCT ----------------
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleProductNotFound(
+            ProductNotFoundException ex) {
+
+        return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ProductAlreadyDisabledException.class)
+    public ResponseEntity<Map<String, Object>> handleProductAlreadyDisabled(
+            ProductAlreadyDisabledException ex) {
 
         return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
