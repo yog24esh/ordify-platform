@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { authApi } from "../api/authApi";
-
+import { jwtDecode } from "jwt-decode";
 import toast from "react-hot-toast";
 import { setDemoSession } from "../../../services/session";
 export default function LoginPage() {
@@ -82,15 +82,22 @@ const handleLogin = async () => {
 
     toast.success("Login Successful!");
 
-    const { token, role, userId } = res.data;
+    const { token } = res.data;
+
+    const decoded: any = jwtDecode(token);
+
+    const role = decoded.role;     // or decoded.authorities[0]
+    const userId = decoded.sub; 
+
+    console.log("ROLE FROM STORAGE:", localStorage.getItem("role"));
 
     // Save auth info
     localStorage.setItem("token", token);
     localStorage.setItem("role", role);
     localStorage.setItem("userId", String(userId));
+    setDemoSession();
     // localStorage.setItem("SESSION_ID", sessionId);
 
-    setDemoSession();
 
     //  Redirect to dashboard (RoleBasedRedirect will handle actual route)
     navigate("/dashboard", { replace: true });

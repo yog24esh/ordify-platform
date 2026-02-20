@@ -60,7 +60,7 @@ public class AuthService {
                     .body(new AuthResponse("Invalid credentials"));
         }
 
-        String token = jwtUtil.generateToken(user.getEmail());
+        String token = jwtUtil.generateToken(user.getEmail(), user.getRole().getRoleName());
         return ResponseEntity.ok(new AuthResponse(token));
     }
 

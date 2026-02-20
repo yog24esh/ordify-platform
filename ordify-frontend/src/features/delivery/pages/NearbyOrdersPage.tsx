@@ -40,6 +40,7 @@ export default function NearbyOrdersPage() {
         orderId,
         deliveryPartnerId,
       });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       console.warn("Accept order failed, continuing demo");
     }

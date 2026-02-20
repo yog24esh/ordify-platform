@@ -8,6 +8,7 @@ export default function DeliveryDashboardPage() {
   const goOnline = async () => {
     try {
       await deliveryApi.goOnline(deliveryPartnerId);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       console.warn("Backend not reachable, continuing demo");
     }

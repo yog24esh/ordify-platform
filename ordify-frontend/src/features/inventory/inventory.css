@@ -1,0 +1,204 @@
+/* =========================================================
+   SHARED BACKGROUND (LIST + UPDATE)
+========================================================= */
+
+.inventory-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6f7cf7, #7b5dc7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 2rem;
+}
+
+/* =========================================================
+   PAGE TITLES
+========================================================= */
+
+.inventory-page-title {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* =========================================================
+   MAIN CARD (DEFAULT = LIST PAGE)
+========================================================= */
+
+.inventory-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 1100px; /* List page width */
+  padding: 2.25rem;
+  border-radius: 16px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.18),
+    0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================================================
+   UPDATE PAGE CARD (SMALL FORM)
+========================================================= */
+
+.inventory-card--form {
+  max-width: 520px; /* Update page width */
+  padding: 2rem 2.2rem;
+}
+
+/* =========================================================
+   HEADER (LIST PAGE)
+========================================================= */
+
+.inventory-header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.inventory-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.inventory-subtitle {
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   STATES
+========================================================= */
+
+.inventory-loading,
+.inventory-empty {
+  text-align: center;
+  color: #6c757d;
+  padding: 2rem 0;
+}
+
+/* =========================================================
+   TABLE (LIST PAGE)
+========================================================= */
+
+.inventory-table-wrapper {
+  overflow-x: auto;
+}
+
+.inventory-table {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.inventory-table thead th {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: #6c757d;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.inventory-table tbody td {
+  padding: 0.85rem 1rem;
+  vertical-align: middle;
+}
+
+.inventory-table tbody tr {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.inventory-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* =========================================================
+   BADGES (LIST + UPDATE)
+========================================================= */
+
+.inventory-badge,
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+  padding: 0.4em 0.75em;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.inventory-badge.active,
+.availability-badge.yes {
+  background-color: rgba(25, 135, 84, 0.15);
+  color: #198754;
+}
+
+.inventory-badge.inactive,
+.availability-badge.no {
+  background-color: rgba(220, 53, 69, 0.15);
+  color: #dc3545;
+}
+
+/* =========================================================
+   ACTIONS (LIST PAGE)
+========================================================= */
+
+.inventory-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.75rem;
+}
+
+/* =========================================================
+   FORM (UPDATE PAGE)
+========================================================= */
+
+.inventory-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control {
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+}
+
+.form-control:focus {
+  border-color: #7b5dc7;
+  box-shadow: 0 0 0 0.15rem rgba(123, 93, 199, 0.25);
+}
+
+/* =========================================================
+   BUTTONS (SHARED)
+========================================================= */
+
+.btn {
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+.btn-primary,
+.inventory-submit {
+  background: linear-gradient(135deg, #6f7cf7, #7b5dc7);
+  border: none;
+}
+
+.btn-primary:hover,
+.inventory-submit:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.inventory-submit {
+  margin-top: 1rem;
+  padding: 0.65rem;
+  border-radius: 10px;
+}

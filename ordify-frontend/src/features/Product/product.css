@@ -1,0 +1,305 @@
+/* =========================================================
+   PRODUCT PAGE BACKGROUND
+========================================================= */
+
+.product-page {
+  min-height: 100vh;
+  max-width: 100% !important;
+  background: linear-gradient(135deg, #6f7cf7, #7b5dc7);
+  padding: 3rem 2rem;
+}
+
+/* =========================================================
+   PAGE TITLE
+========================================================= */
+
+.product-page > h3 {
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* =========================================================
+   ADD PRODUCT BUTTON
+========================================================= */
+
+.product-page > .btn-success {
+  position: fixed;
+  right: 3rem;
+  bottom: 2.5rem;
+  border-radius: 999px;
+  padding: 0.45rem 1.2rem;
+  background: linear-gradient(135deg, #6f7cf7, #7b5dc7);
+  border: none;
+  font-size: 0.85rem;
+  z-index: 10;
+}
+
+/* =========================================================
+   TABLE AS CARD
+========================================================= */
+
+.product-page .table {
+  background: #ffffff;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 18px;
+  overflow: hidden;
+  border-collapse: collapse;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.18),
+    0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* Remove bootstrap borders */
+.product-page .table-bordered > :not(caption) > * {
+  border-width: 0;
+}
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.product-page .table thead th {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: #6c757d;
+  padding: 1rem;
+  background: #ffffff;
+}
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+.product-page .table tbody td {
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  vertical-align: middle;
+}
+
+.product-page .table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* =========================================================
+   ACTIVE BADGE
+========================================================= */
+
+.product-page .table tbody td:nth-child(5) {
+  text-align: center;
+}
+
+.product-page .table tbody td:nth-child(5) {
+  display: inline-block;
+  min-width: 80px;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: rgba(25, 135, 84, 0.15);
+  color: #198754;
+}
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.product-page .table td:last-child {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.product-page .btn-primary {
+  background: linear-gradient(135deg, #6f7cf7, #7b5dc7);
+  border: none;
+  border-radius: 8px;
+  padding: 0.35rem 0.9rem;
+}
+
+.product-page .btn-danger {
+  background: #ffffff;
+  color: #000;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 0.35rem 0.9rem;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.product-page .modal-content {
+  border-radius: 14px;
+}
+
+.product-page .modal-header,
+.product-page .modal-footer {
+  border: none;
+}
+
+/* =========================================================
+   PRODUCT MODAL FIX (CENTERED OVERLAY)
+========================================================= */
+
+.product-page .modal {
+  position: fixed;
+  inset: 0;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  z-index: 1055;
+}
+
+/* Center dialog */
+.product-page .modal-dialog {
+  margin: 0;
+  max-width: 520px;
+  width: 100%;
+}
+
+/* Modal card styling */
+.product-page .modal-content {
+  border-radius: 14px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.25),
+    0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Header & footer cleanup */
+.product-page .modal-header,
+.product-page .modal-footer {
+  border: none;
+}
+/* =========================================================
+   PRODUCT PAGE SCOPE (IMPORTANT)
+========================================================= */
+
+.container.mt-4 {
+  position: relative;
+}
+
+/* =========================================================
+   MODAL OVERLAY (SOFT DIM)
+========================================================= */
+
+.container.mt-4 .modal {
+  position: fixed;
+  inset: 0;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+  z-index: 1050;
+}
+
+/* =========================================================
+   MODAL DIALOG (CARD STYLE)
+========================================================= */
+
+.container.mt-4 .modal-dialog {
+  margin: 0;
+  width: 420px;
+  max-width: 90%;
+}
+
+/* =========================================================
+   MODAL CONTENT
+========================================================= */
+
+.container.mt-4 .modal-content {
+  border-radius: 18px;
+  padding: 1.25rem 1.25rem 1rem;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.35),
+    0 10px 25px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
+
+.container.mt-4 .modal-header {
+  border: none;
+  padding-bottom: 0.75rem;
+}
+
+.container.mt-4 .modal-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* =========================================================
+   MODAL BODY (INPUT STACK)
+========================================================= */
+
+.container.mt-4 .modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Inputs */
+.container.mt-4 .modal-body .form-control {
+  border-radius: 12px;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+.container.mt-4 .modal-body .form-control:focus {
+  border-color: #7b5dc7;
+  box-shadow: 0 0 0 0.15rem rgba(123, 93, 199, 0.25);
+}
+
+/* =========================================================
+   MODAL FOOTER
+========================================================= */
+
+.container.mt-4 .modal-footer {
+  border: none;
+  padding-top: 0.75rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Cancel */
+.container.mt-4 .modal-footer .btn-secondary {
+  background: #ffffff;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0.35rem 0.9rem;
+}
+
+/* Save */
+.container.mt-4 .modal-footer .btn-success {
+  background: linear-gradient(135deg, #6f7cf7, #7b5dc7);
+  border: none;
+  border-radius: 10px;
+  padding: 0.35rem 1rem;
+}
+
+/* =========================================================
+   SUBTLE ENTRY ANIMATION
+========================================================= */
+
+@keyframes modalPop {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.container.mt-4 .modal-content {
+  animation: modalPop 0.18s ease-out;
+}

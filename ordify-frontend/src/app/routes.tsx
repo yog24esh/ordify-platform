@@ -10,25 +10,34 @@ import UsersPage from "../features/admin/pages/UsersPage";
 import OrdersPage from "../features/admin/pages/OrdersPage";
 
 import ProtectedRoute from "./ProtectedRoutes";
-
+import { Navigate } from "react-router-dom";
 import { authRoutes } from "../features/user/authRoutes";
 import { dashboardRoutes } from "../features/dashboard/dashboardRoutes";
-
+import { orderRoutes } from "../features/order/orderRoutes";
+import { darkstoreRoutes } from "../features/darkstore/darkstore.routes";
+import { inventoryRoutes } from "../features/inventory/inventoryRoutes";
+import { productRoutes } from "../features/Product/product.routes";
+import { customerRoutes } from "../features/customer/customerRoutes";
 
 export const router = createBrowserRouter([
-
   ...authRoutes,
 
+  ...customerRoutes,
+
+  ...orderRoutes,
+  
+  ...darkstoreRoutes,
+  
   ...dashboardRoutes,
-  {
-    path: "/",
-    element: (
-      <div style={{ padding: 20 }}>
-        <h1>Ordify – Delivery Demo</h1>
-        <p>Go to /delivery/dashboard</p>
-      </div>
-    ),
-  },
+
+  ...inventoryRoutes,
+
+  ...productRoutes,
+
+ {
+  path: "/",
+  element: <Navigate to="/login" replace />,
+},
   {
     path: "/delivery",
     children: [
