@@ -1,5 +1,6 @@
 package com.ordify.order.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import com.ordify.order.dto.OrderRequestDto;
 import com.ordify.order.dto.OrderResponseDto;
 import com.ordify.order.service.OrderService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/orders")
 public class OrderController {

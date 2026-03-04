@@ -1,0 +1,250 @@
+/* ===============================
+   FULL PAGE GRADIENT BACKGROUND
+================================ */
+
+.darkstore-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6f7cf7, #7b5dc7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* ===============================
+   MAIN CARD (LOGIN-STYLE)
+================================ */
+
+.darkstore-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 1100px;
+  padding: 2rem 2.2rem;
+  border-radius: 14px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.18),
+    0 6px 14px rgba(0, 0, 0, 0.12);
+
+  /* center inner content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===============================
+   TITLE
+================================ */
+
+.darkstore-title {
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.darkstore-subtitle {
+  text-align: center;
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin-bottom: 1.75rem;
+}
+
+/* ===============================
+   TABLE STRUCTURE + POLISH
+================================ */
+
+.table {
+  width: 100%;
+  max-width: 900px;        /* keeps table centered */
+  margin: 0 auto;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Header */
+.table-dark th {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+/* Body cells */
+.table tbody td {
+  padding: 0.85rem 1rem;
+  vertical-align: middle;
+}
+
+/* Row hover */
+.table tbody tr {
+  transition: background-color 0.15s ease;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* ===============================
+   COLUMN WIDTH CONTROL
+================================ */
+
+.table th:nth-child(1),
+.table td:nth-child(1) {
+  width: 35%;
+}
+
+.table th:nth-child(2),
+.table td:nth-child(2) {
+  width: 15%;
+  text-align: center;
+}
+
+.table th:nth-child(3),
+.table td:nth-child(3) {
+  width: 15%;
+  text-align: center;
+}
+
+.table th:nth-child(4),
+.table td:nth-child(4) {
+  width: 35%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ===============================
+   STATUS BADGE
+================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+  border-radius: 999px;
+}
+
+.badge.bg-success {
+  background-color: rgba(25, 135, 84, 0.15) !important;
+  color: #198754;
+  font-weight: 500;
+  padding: 0.4em 0.75em;
+}
+
+/* ===============================
+   ACTION BUTTONS
+================================ */
+
+.table td:last-child .btn {
+  margin: 0 0.25rem;
+}
+
+.btn {
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+.btn-sm {
+  padding: 0.35rem 0.75rem;
+}
+
+/* Primary (Edit) */
+.btn-primary {
+  background: linear-gradient(135deg, #6f7cf7, #7b5dc7);
+  border: none;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Secondary (View Inventory) */
+.btn-outline-secondary:hover {
+  background-color: #f1f3f5;
+}
+
+/* ===============================
+   EDIT DARK STORE – PERFECT FORM ALIGNMENT
+================================ */
+
+/* Full-page background */
+.container.mt-4 {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6f7cf7, #7b5dc7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Page title */
+.container.mt-4 > h3 {
+  position: absolute;
+  top: 40px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Form card */
+.container.mt-4 form {
+  background: #ffffff;
+  width: 100%;
+  max-width: 520px;
+  padding: 2rem 2.25rem;
+  border-radius: 14px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.18),
+    0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* Each field block */
+.container.mt-4 .mb-3 {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.container.mt-4 label {
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+}
+
+/* Inputs */
+.container.mt-4 input {
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  padding: 0.5rem 0.75rem;
+}
+
+/* Input focus */
+.container.mt-4 input:focus {
+  outline: none;
+  border-color: #6f7cf7;
+  box-shadow: 0 0 0 2px rgba(111, 124, 247, 0.2);
+}
+
+/* Update button */
+.container.mt-4 button.btn-primary {
+  width: 100%;
+  margin-top: 1rem;
+  height: 44px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #6f7cf7, #7b5dc7);
+  border: none;
+  font-weight: 500;
+}
+
+.container.mt-4 button.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+

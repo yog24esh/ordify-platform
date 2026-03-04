@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ordify.delivery.entity.DeliveryAssignment;
+import com.ordify.order.entity.Order;
 
 @Repository
 public interface DeliveryAssignmentRepository extends JpaRepository<DeliveryAssignment, Long> {
@@ -14,4 +17,5 @@ public interface DeliveryAssignmentRepository extends JpaRepository<DeliveryAssi
     Optional<DeliveryAssignment> findByOrderId(Long orderId);
 
     List<DeliveryAssignment> findByDeliveryPartnerId(Long deliveryPartnerId);
+        
 }

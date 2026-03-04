@@ -16,6 +16,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 @Entity
 @Table(name = "orders")
@@ -57,6 +58,10 @@ public class Order {
         fetch = FetchType.LAZY
     )
     private List<OrderItem> items;
+    
+    @Version
+    @Column(nullable = false)
+    private Long version;
 
     @PrePersist
     protected void onCreate() {
